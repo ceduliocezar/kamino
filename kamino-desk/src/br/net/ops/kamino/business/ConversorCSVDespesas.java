@@ -19,13 +19,13 @@ import com.opencsv.CSVReader;
  *
  */
 public class ConversorCSVDespesas extends UseCase {
-	
+
 	private DateFormat format = new SimpleDateFormat("dd/MM/yy");
 
 	public List<Despesa> exec(String csvFilePath) throws IOException {
-		
+
 		System.out.println("Iniciando conversão");
-		
+
 		CSVReader reader = new CSVReader(new FileReader(csvFilePath), ';',
 				'\"', 2);
 
@@ -38,7 +38,7 @@ public class ConversorCSVDespesas extends UseCase {
 
 		while ((nextLine = reader.readNext()) != null) {
 			totalLidos++;
-			
+
 			try {
 				despesa = convert(nextLine);
 				despesas.add(despesa);
@@ -47,25 +47,27 @@ public class ConversorCSVDespesas extends UseCase {
 				tratarErroConversao(nextLine, totalLidos);
 			}
 		}
-		System.out.println("Finalizou conversão");
+		System.out
+				.println("Finalizou conversão total de registros convertidos:"
+						+ despesas.size());
 		return despesas;
 	}
 
 	private void tratarErroConversao(String[] registro, long totalLidos) {
-		
+
 		System.out.print(">>FALHA: Não foi possível converter o registro:");
 
 		StringBuilder sb = new StringBuilder("[");
-		
+
 		for (String string : registro) {
 			sb.append(string);
 		}
 		sb.append("]");
-		
+
 		System.out.println(sb.toString());
-		System.out.println(String.format(">>FALHA: Registros lidos até o momento: %d",
-				totalLidos));
-		
+		System.out.println(String.format(
+				">>FALHA: Registros lidos até o momento: %d", totalLidos));
+
 	}
 
 	private Despesa convert(String[] registro) throws ParseException {
@@ -97,7 +99,7 @@ public class ConversorCSVDespesas extends UseCase {
 	}
 
 	private Date getDataFromText(String dateString) throws ParseException {
-		
+
 		Date date = format.parse(dateString);
 
 		return date;
