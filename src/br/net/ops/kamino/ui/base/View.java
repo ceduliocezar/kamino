@@ -1,4 +1,4 @@
-package br.net.ops.kamino.gui.base;
+package br.net.ops.kamino.ui.base;
 
 /**
  * 

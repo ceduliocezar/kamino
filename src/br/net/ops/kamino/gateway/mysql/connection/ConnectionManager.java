@@ -16,7 +16,7 @@ public class ConnectionManager {
 	private static ConnectionManager INSTANCE = null;
 	private Connection connection;
 
-	private ConnectionManager(ConnectionConfig connectionConfig)
+	private ConnectionManager(KaminoConfig connectionConfig)
 			throws SQLException {
 
 		String stringConnection = String.format("jdbc:mysql://%s:%s/%s",
@@ -28,7 +28,7 @@ public class ConnectionManager {
 	}
 
 	public static ConnectionManager getInstance(
-			ConnectionConfig connectionConfig) throws SQLException {
+			KaminoConfig connectionConfig) throws SQLException {
 
 		if (INSTANCE == null) {
 			INSTANCE = new ConnectionManager(connectionConfig);

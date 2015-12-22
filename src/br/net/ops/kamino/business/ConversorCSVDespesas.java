@@ -19,6 +19,8 @@ import com.opencsv.CSVReader;
  *
  */
 public class ConversorCSVDespesas extends UseCase {
+	
+	private DateFormat format = new SimpleDateFormat("dd/MM/yy");
 
 	public List<Despesa> exec(String csvFilePath) throws IOException {
 		
@@ -95,8 +97,7 @@ public class ConversorCSVDespesas extends UseCase {
 	}
 
 	private Date getDataFromText(String dateString) throws ParseException {
-
-		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		
 		Date date = format.parse(dateString);
 
 		return date;

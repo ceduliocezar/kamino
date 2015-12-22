@@ -8,7 +8,7 @@ import java.util.List;
 import br.net.ops.kamino.entity.Despesa;
 import br.net.ops.kamino.gateway.DespesasDAO;
 import br.net.ops.kamino.gateway.mysql.DespesaDAOMySQL;
-import br.net.ops.kamino.gateway.mysql.connection.ConnectionConfig;
+import br.net.ops.kamino.gateway.mysql.connection.KaminoConfig;
 
 /**
  * @author cedulio
@@ -18,7 +18,7 @@ public class SalvarDespesas extends UseCase {
 
 	private DespesasDAO despesasDAO;
 
-	public SalvarDespesas(ConnectionConfig configConnectionConfig) {
+	public SalvarDespesas(KaminoConfig configConnectionConfig) {
 		this.despesasDAO = new DespesaDAOMySQL(configConnectionConfig);
 	}
 

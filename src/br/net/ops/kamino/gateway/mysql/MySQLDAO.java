@@ -7,7 +7,7 @@ import java.sql.Connection;
 import java.sql.SQLException;
 
 import br.net.ops.kamino.gateway.Gateway;
-import br.net.ops.kamino.gateway.mysql.connection.ConnectionConfig;
+import br.net.ops.kamino.gateway.mysql.connection.KaminoConfig;
 import br.net.ops.kamino.gateway.mysql.connection.ConnectionManager;
 
 /**
@@ -16,17 +16,17 @@ import br.net.ops.kamino.gateway.mysql.connection.ConnectionManager;
  */
 public class MySQLDAO extends Gateway {
 
-	private ConnectionConfig connectionConfig;
+	private KaminoConfig connectionConfig;
 
-	public MySQLDAO(ConnectionConfig connectionConfig) {
+	public MySQLDAO(KaminoConfig connectionConfig) {
 		setConnectionConfig(connectionConfig);
 	}
 
-	public ConnectionConfig getConnectionConfig() {
+	public KaminoConfig getConnectionConfig() {
 		return connectionConfig;
 	}
 
-	private void setConnectionConfig(ConnectionConfig connectionConfig) {
+	private void setConnectionConfig(KaminoConfig connectionConfig) {
 		this.connectionConfig = connectionConfig;
 	}
 

@@ -1,13 +1,13 @@
-package br.net.ops.kamino.gui.console;
+package br.net.ops.kamino.ui.console;
 
 import java.util.List;
 
 import br.net.ops.kamino.business.ConversorCSVDespesas;
 import br.net.ops.kamino.business.SalvarDespesas;
 import br.net.ops.kamino.entity.Despesa;
-import br.net.ops.kamino.gateway.mysql.connection.ConnectionConfig;
-import br.net.ops.kamino.gui.base.Presenter;
-import br.net.ops.kamino.gui.base.View;
+import br.net.ops.kamino.gateway.mysql.connection.KaminoConfig;
+import br.net.ops.kamino.ui.base.Presenter;
+import br.net.ops.kamino.ui.base.View;
 
 /**
  * 
@@ -18,32 +18,22 @@ public class ProcessamentoConsolePresenter extends Presenter {
 
 	private ConversorCSVDespesas conversor;
 	private SalvarDespesas salvarDespesas;
-	private String[] args;
+	private KaminoConfig config;
 
-	public ProcessamentoConsolePresenter(String[] args2) {
-		this.args = args2;
+	public ProcessamentoConsolePresenter(KaminoConfig config) {
+		this.config = config;
 	}
 
 	public void init() {
+		super.init();
 		setConversor(createNewConversor());
 		setSalvarDespesas(createNewSalvarDespesas());
 
-		super.init();
+		iniciarProcessamento();
 	}
 
 	private SalvarDespesas createNewSalvarDespesas() {
-		return new SalvarDespesas(createConnectionConfig());
-	}
-
-	private ConnectionConfig createConnectionConfig() {
-
-		ConnectionConfig config = new ConnectionConfig();
-		config.setHost(args[1]);
-		config.setPort(args[2]);
-		config.setSchema(args[3]);
-		config.setUser(args[4]);
-		config.setPass(args[5]);
-		return config;
+		return new SalvarDespesas(config);
 	}
 
 	private ConversorCSVDespesas createNewConversor() {
@@ -59,18 +49,15 @@ public class ProcessamentoConsolePresenter extends Presenter {
 		return new ProcessamentoConsoleView();
 	}
 
-	public void onSelectFilePath(String filePath) {
-		iniciarProcessamento(filePath);
-	}
-
-	private void iniciarProcessamento(String filePath) {
+	private void iniciarProcessamento() {
 		try {
-			List<Despesa> despesas = getConversor().exec(filePath);
+			List<Despesa> despesas = getConversor().exec(
+					config.getCsvFilePath());
 
 			getSalvarDespesas().exec(despesas);
-			
-			System.out.println(String.format("Total de registros processados: %d.",
-					despesas.size()));
+
+			System.out.println(String.format(
+					"Total de registros processados: %d.", despesas.size()));
 
 		} catch (Exception e) {
 			e.printStackTrace();

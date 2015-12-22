@@ -100,4 +100,22 @@ public class Despesa extends Entity {
 		this.cnpjCpf = cnpjCpf;
 	}
 
+	@Override
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("\nano:" + ano);
+		sb.append("\nmes:" + mes);
+		sb.append("\nsenador:" + senador);
+		sb.append("\ntipoDespesa:" + tipoDespesa);
+		sb.append("\ncnpjCpf:" + cnpjCpf);
+		sb.append("\nfornecedor:" + fornecedor);
+		sb.append("\ndocumento:" + documento);
+		sb.append("\ndata:" + data);
+		sb.append("\ndetalhamento:" + detalhamento);
+		sb.append("\nvalor:" + valor);
+
+		return sb.toString();
+	}
+
 }

@@ -7,13 +7,15 @@ package br.net.ops.kamino.gateway.mysql.connection;
  * @author cedulio
  *
  */
-public class ConnectionConfig {
+public class KaminoConfig {
 
 	private String host;
 	private String port;
 	private String schema;
 	private String user;
 	private String pass;
+
+	private String csvFilePath;
 
 	public String getHost() {
 		return host;
@@ -53,6 +55,14 @@ public class ConnectionConfig {
 
 	public void setPass(String pass) {
 		this.pass = pass;
+	}
+
+	public String getCsvFilePath() {
+		return csvFilePath;
+	}
+
+	public void setCsvFilePath(String csvFilePath) {
+		this.csvFilePath = csvFilePath;
 	}
 
 }

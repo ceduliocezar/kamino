@@ -1,6 +1,6 @@
-package br.net.ops.kamino.gui.console;
+package br.net.ops.kamino.ui.console;
 
-import br.net.ops.kamino.gui.base.View;
+import br.net.ops.kamino.ui.base.View;
 
 /**
  * 
