@@ -1,15 +1,15 @@
-CREATE TABLE `ops_kamino`.`despesa` (
-  `id` INT NOT NULL AUTO_INCREMENT COMMENT '',
-  `ano` INT NOT NULL COMMENT '',
-  `mes` INT NOT NULL COMMENT '',
-  `senador` VARCHAR(255) NOT NULL COMMENT '',
-  `tipo_despesa` VARCHAR(255) NOT NULL COMMENT '',
-  `cnpj_cpf` VARCHAR(255) NOT NULL COMMENT '',
-  `fornecedor` VARCHAR(255) NOT NULL COMMENT '',
-  `documento` VARCHAR(255) NOT NULL COMMENT '',
-  `data` DATE NOT NULL COMMENT '',
-  `detalhamento` VARCHAR(45) NOT NULL COMMENT '',
-  `valor_reembolsado` DOUBLE NOT NULL COMMENT '',
-  `ops_data_processamento` DATETIME NOT NULL COMMENT '',
-  PRIMARY KEY (`id`)  COMMENT '');
-
+CREATE TABLE `despesa` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `ano` int(11) NOT NULL,
+  `mes` int(11) NOT NULL,
+  `senador` varchar(1000) NOT NULL,
+  `tipo_despesa` varchar(1000) NOT NULL,
+  `cnpj_cpf` varchar(1000) NOT NULL,
+  `fornecedor` varchar(1000) NOT NULL,
+  `documento` varchar(1000) NOT NULL,
+  `data` date NOT NULL,
+  `detalhamento` varchar(5000) NOT NULL,
+  `valor_reembolsado` double NOT NULL,
+  `ops_data_processamento` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+)
