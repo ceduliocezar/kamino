@@ -6,7 +6,7 @@ Software para o processamento dos dados aberto do portal de transparência do go
 http://www12.senado.gov.br/transparencia/dados-abertos/dados-abertos-ceaps
 
 
-# Libs
+# Dependencies
 * [Commons CLI] - The Apache Commons CLI library provides an API for parsing command line options passed to programs.
 * [Commons Lang] - The standard Java libraries fail to provide enough methods for manipulation of its core classes.
 * [opencsv] - Opencsv is a very simple csv (comma-separated values) parser library for Java.
